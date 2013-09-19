@@ -5,8 +5,8 @@ Git 使用 SHA-1 算法计算数据的校验和，通过对件的内容或目录
 
 
 ###文件的三种状态：
-在 Git 内都只有三种状态：**已提交（committed）**， **已修改（modified）**和 **已暂存（staged）**。  
-文件流转的三个工作区域：**Git的工作目录**， **暂存区域**，以及**本地仓库**。  
+在 Git 内都只有三种状态： **已提交（committed）**， **已修改（modified）**和 **已暂存（staged）**。  
+文件流转的三个工作区域： **Git的工作目录**， **暂存区域**，以及 **本地仓库**。  
 ![文件的状态](18333fig0106-tn.png)
 
 ###文件的状态变化周期
@@ -42,6 +42,23 @@ Git 使用 SHA-1 算法计算数据的校验和，通过对件的内容或目录
 	git fetch remotename(抓取到本地仓库)  
 	git pull remotename(合并到本地仓库当前分支)  
 	git push [remote-name] [branch-name]  
+	git push [远程名] :[分支名] (删除远程分支)  
+	git push [远程名] :refs/tags/<tagname>(删除远程tag)  
+	git push origin --delete [tag] <branchName|tagName>
+
+	git tag  [-a|-s] tagname [checksum] -m ''  
+	git show tagname  
+	git push remotelocalname --tags(推送标签)
+
+	git branch [-v|--merged|--no-merged]  
+	git branch [-d(删除)|-D(强制删除)] branchname  
+	git checkout [-b] branchname(切换分支) [[远程名]/[分支名]]  
+	git merge branchname  
+	git mergetool  
+
+	git rbase branchto [branchfrom]  
+	git rbase --onto branchto branch1 branch2  
+
 ####忽略某些文件如日志文件
 	cat .gitignore   
 
