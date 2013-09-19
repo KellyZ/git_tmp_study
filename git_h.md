@@ -5,14 +5,12 @@ Git 使用 SHA-1 算法计算数据的校验和，通过对件的内容或目录
 
 
 ###文件的三种状态：
-在 Git 内都只有三种状态：**已提交（committed）**，**已修改（modified）**和**已暂存（staged）**。  
-文件流转的三个工作区域：**Git的工作目录**，**暂存区域**，以及**本地仓库**。  
+在 Git 内都只有三种状态：**已提交（committed）**， **已修改（modified）**和 **已暂存（staged）**。  
+文件流转的三个工作区域：**Git的工作目录**， **暂存区域**，以及**本地仓库**。  
 ![文件的状态](18333fig0106-tn.png)
 
 ###文件的状态变化周期
 ![文件的状态变化周期](18333fig0201-tn.png)
-
-
 
 
 ###git command
@@ -20,30 +18,44 @@ Git 使用 SHA-1 算法计算数据的校验和，通过对件的内容或目录
 	git config --global user.name "KellyZ"  
 	git config --global user.email "work2012kk@gmail.com"  
 	git config --list  
->获取帮助
+###获取帮助  
 	git help config  
->start git
+###start git  
 	git init  
 	git add git_h.md  
 	git rm [--cache|-f] filename  
-	git mv file1 file2
-	**git status** 
-	**git log [-p|-2|--stat|--pretty (online|short|full|fuller)|]**
+	git mv file1 file2  
+	git reset HEAD <file>...(暂停缓存)  
+	git checkout -- filename(恢复缓存)  
+	**git status**  
+	**git log [-p|-2|--stat|--pretty (online|short|full|fuller)|--sine=2.weeks]**  
 	git diff [--cache|--staged]  
-	git [-a] -m "commit verbos"  
->忽略某些文件如日志文件
+
+	git commit [-a] -m "commit verbos"  
+	git commit --amend  
+
+	git remote [-v]  
+	git remote add name url  
+	git remote rm localname(不再跟踪对应远端仓库)
+	git remote show [remote-name]  
+	git remote rename newlocalname oldlocalname(修改远程仓库本地的简称)
+	git fetch remotename(抓取到本地仓库)  
+	git pull remotename(合并到本地仓库当前分支)  
+	git push [remote-name] [branch-name]  
+####忽略某些文件如日志文件
 	cat .gitignore   
 
 
-**配置**
--`/etc/gitconfig`文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 --system 选项，读写的就是这个文件。
--`~/.gitconfig`文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 --global 选项，读写的就是这个文件。
--`.git/config`文件：当前项目的 git 目录中的配置文件，这里的配置仅仅针对当前项目有效。
+**配置**  
+- `/etc/gitconfig`文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 --system 选项，读写的就是这个文件。  
+- `~/.gitconfig`文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 --global 选项，读写的就是这个文件。  
+- `.git/config`文件：当前项目的 git 目录中的配置文件，这里的配置仅仅针对当前项目有效。  
 
 
 
 ##附录
 ###git log options
+>  
 选项	说明  
 -p	按补丁格式显示每个更新之间的差异。  
 --stat	显示每次更新的文件修改统计信息。  
@@ -54,9 +66,15 @@ Git 使用 SHA-1 算法计算数据的校验和，通过对件的内容或目录
 --relative-date	使用较短的相对时间显示（比如，“2 weeks ago”）。  
 --graph	显示 ASCII 图形表示的分支合并历史。  
 --pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。  
+-(n)	仅显示最近的 n 条提交  
+--since, --after	仅显示指定时间之后的提交。  
+--until, --before	仅显示指定时间之前的提交。  
+--author	仅显示指定作者相关的提交。  
+--committer	仅显示指定提交者相关的提交。  
 
 
 ###git log --pretty format
+>  
 选项	说明  
 %H	提交对象（commit）的完整哈希字串  
 %h	提交对象的简短哈希字串  
